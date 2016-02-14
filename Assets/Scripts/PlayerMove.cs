@@ -13,6 +13,7 @@ public class PlayerMove : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+		// transform.Translate(Vector2.right * Time.deltaTime * scroll, Camera.main.transform);
 		GetComponent<Rigidbody2D>().AddForce(Vector2.right * scroll);
 		if (Input.GetKeyDown (KeyCode.Space)) {
 			GetComponent<Rigidbody2D>().AddForce(Vector2.up * jumpSpeed);
