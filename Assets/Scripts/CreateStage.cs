@@ -26,7 +26,6 @@ public class CreateStage : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
 	{
-		// キャラの位置から現在のステージチップのインデックスを計算
 		int charaPositionIndex = (int)(player.position.x / StageTipSize);
 
 		// 次のステージチップにはいったらステージの更新処理をする
@@ -69,7 +68,6 @@ public class CreateStage : MonoBehaviour {
 		return stageObject;
 	}
 
-	// 1番古いステージを削除
 	void DestroyOldestStage ()
 	{
 		GameObject oldStage = createdStageList[0];
