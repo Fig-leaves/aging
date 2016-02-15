@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class PlayerMove : MonoBehaviour {
@@ -6,9 +6,9 @@ public class PlayerMove : MonoBehaviour {
 
 	public int jumpCount = 1;
 	public int defaultJumpCount = 1;
-	public float jumpSpeed = 8.0F;
 
 	public int Life = 3;
+
 
 
 	// Use this for initialization
@@ -19,8 +19,8 @@ public class PlayerMove : MonoBehaviour {
 		// transform.Translate(Vector2.right * Time.deltaTime * scroll, Camera.main.transform);
 		GetComponent<Rigidbody2D>().AddForce(Vector2.right * scroll);
 
-		if (Input.GetKeyDown (KeyCode.Space) && jumpCount > 0) {
-			GetComponent<Rigidbody2D>().AddForce(Vector2.up * jumpSpeed);
+		if (Input.GetKeyDown("space") && jumpCount > 0) {
+			GetComponent<Rigidbody2D>().AddForce(Vector2.up * 450);
 			jumpCount -= 1;
 		}
 	}
@@ -33,8 +33,19 @@ public class PlayerMove : MonoBehaviour {
 		else if (coll.gameObject.tag == "Boots") {
 			defaultJumpCount += 1;
 			Destroy(coll.gameObject);
-
 		}
+		else if (coll.gameObject.tag == "Enemy") {
+			Life -= 1;
+			Destroy(coll.gameObject);
+			Debug.Log(Life);
+		}
+		else if (coll.gameObject.tag == "Item") {
+			Life += 1;
+			Destroy(coll.gameObject);
+			Debug.Log(Life);
+		}
+
+
 	}
 
 }
