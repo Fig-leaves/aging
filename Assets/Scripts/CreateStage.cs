@@ -48,7 +48,7 @@ public class CreateStage : MonoBehaviour {
 			createdStageList.Add(stageObject);
 		}
 		// ステージ保持上限になるまで古いステージを削除
-		while (createdStageList.Count > preInstantiate + 2) DestroyOldestStage();
+			while (createdStageList.Count > preInstantiate + 2) DestroyOldStage();
 
 		currentTipIndex = toTipIndex;
 	}
@@ -67,11 +67,12 @@ public class CreateStage : MonoBehaviour {
 		return stageObject;
 	}
 
-	void DestroyOldestStage ()
-	{
-		GameObject oldStage = createdStageList[0];
-		createdStageList.RemoveAt(0);
-		Destroy(oldStage);
+	void DestroyOldStage () {
+		if (currentTipIndex > 3) {
+			GameObject oldStage = createdStageList[1];
+			Destroy(oldStage);
+
+		}
 	}
 
 }
