@@ -14,11 +14,17 @@ public class Damege : MonoBehaviour {
 
 	}
 
-	void OnCollisionEnter2D(Collision2D col){
+	void OnCollisionEnter2D(Collision2D col) {
 
 		//  on damage
-		if(col.gameObject.tag == "Enemy"){
+		if (col.gameObject.tag == "Enemy") {
 			Life -= 1;
+			Debug.Log(Life);
+			Destroy(col.gameObject);
+
+		}
+		else if (col.gameObject.tag == "Item") {
+			Life += 1;
 			Debug.Log(Life);
 			Destroy(col.gameObject);
 		}
