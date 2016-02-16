@@ -7,9 +7,12 @@ public class PlayerMove : MonoBehaviour {
 	public int jumpCount = 1;
 	public int defaultJumpCount = 1;
 
-	public int Life = 3;
+	const int DefaultLife = 3;
+	int life = DefaultLife;
 
-
+	public int Life() {
+		return life;
+	}
 
 	// Use this for initialization
 	void Start () {
@@ -35,14 +38,22 @@ public class PlayerMove : MonoBehaviour {
 			Destroy(coll.gameObject);
 		}
 		else if (coll.gameObject.tag == "Enemy") {
-			Life -= 1;
+			GameScore.timeLeft -= 10;
+
 			Destroy(coll.gameObject);
-			Debug.Log(Life);
+			Debug.Log(life);
 		}
-		else if (coll.gameObject.tag == "Item") {
-			Life += 1;
+		else if (coll.gameObject.tag == "Timer") {
+			GameScore.timeLeft += 10;
 			Destroy(coll.gameObject);
-			Debug.Log(Life);
+		}
+
+
+
+		else if (coll.gameObject.tag == "Item") {
+			life += 1;
+			Destroy(coll.gameObject);
+			Debug.Log(life);
 		}
 
 
