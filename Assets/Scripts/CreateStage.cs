@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class CreateStage : MonoBehaviour {
-	const int StageTipSize = 17;
+	const int StageTipSize = 16;
 
 	int currentTipIndex;
 

@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
 
 public class GameScore : MonoBehaviour {
 	public PlayerMove player;
@@ -27,6 +29,11 @@ public class GameScore : MonoBehaviour {
 	//	int life = calcLife();
 	//	lifePanel.text = "Life: " + life;
 		timeLabel.text = ((int)timeLeft).ToString ();
+
+		if (timeLeft <= 0) {
+			Application.LoadLevel ("GameOver");
+		}
+
 	}
 
 /*	public timer() {
